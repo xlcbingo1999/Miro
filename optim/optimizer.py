@@ -353,7 +353,8 @@ class Optimizer(object):
 		print(f'TASK {self.task_id}, grid size={len(grid)}: {grid}')	
   
 	def find_best_config(self, task_id): 
-				
+		# [xlc_todo_delete] 提前设置不需要任何的use_csv
+		use_csv = False
 		self.task_id = task_id    		
 		self.prep_profiler()
 	
