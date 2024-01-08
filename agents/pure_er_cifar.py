@@ -212,6 +212,7 @@ class PureER_CIFAR(PureER):
         avg_top1_acc, task_top1_acc, class_top1_acc, avg_top5_acc, task_top5_acc, class_top5_acc= self.eval_task(num_tasks=self.tasks_so_far,model=ckpt_model)
         res = {'acc':avg_top1_acc, 'energy':energy,'energy_estim':energy_estim,'cls_acc':class_top1_acc}
         return res
+    
     def before_train(self, task_id):
         self.task_id = task_id
         self.curr_task_iter_time = []
@@ -342,6 +343,7 @@ class PureER_CIFAR(PureER):
         if self.swap: f.write(f'Num_swapped : {num_swapped}\n')
         if self.optimizer: f.write(f'(Iter Trained, Iter Profiled)=({self.train_iter},{self.overhead})\n')
         f.close()
+    
     def train(self):
         if self.swap is True:
             self.swap_manager.resume()
